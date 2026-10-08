@@ -1,0 +1,41 @@
+genero,region,afinidad,prob_mejor,evidencia,n_registros,promedio_streams,intervalo_inf,intervalo_sup
+Indie,Latinoamérica,134,0.93,Alta,7,8450000,121,147
+Indie,Anglosajón,105,0.04,Baja,12,6620000,92,118
+Indie,Asia,82,0.02,Baja,15,5170000,70,94
+Indie,Europa continental,79,0.01,Baja,9,4980000,67,91
+Hip Hop,Anglosajón,128,0.81,Alta,14,9200000,115,141
+Hip Hop,Latinoamérica,108,0.12,Baja,11,7760000,95,121
+Hip Hop,Europa continental,88,0.05,Baja,10,6320000,76,100
+Hip Hop,Asia,76,0.02,Baja,13,5460000,64,88
+Jazz,Europa continental,127,0.62,Media,8,4980000,114,140
+Jazz,Anglosajón,110,0.25,Baja,10,4310000,97,123
+Jazz,Latinoamérica,95,0.09,Baja,9,3720000,83,107
+Jazz,Asia,78,0.04,Baja,12,3050000,66,90
+Rock,Latinoamérica,112,0.37,Baja,16,7100000,98,126
+Rock,Anglosajón,108,0.33,Baja,18,6850000,94,122
+Rock,Europa continental,95,0.18,Baja,15,6020000,83,107
+Rock,Asia,85,0.12,Baja,14,5390000,73,97
+R&B,Anglosajón,130,0.75,Alta,11,6800000,117,143
+R&B,Europa continental,109,0.14,Baja,9,5700000,96,122
+R&B,Asia,90,0.07,Baja,7,4710000,78,102
+R&B,Latinoamérica,84,0.04,Baja,4,4390000,70,98
+Reggaeton,Asia,125,0.66,Media,13,8900000,112,138
+Reggaeton,Anglosajón,112,0.21,Baja,12,7970000,99,125
+Reggaeton,Europa continental,96,0.09,Baja,10,6830000,84,108
+Reggaeton,Latinoamérica,88,0.04,Baja,17,6260000,76,100
+Pop,Latinoamérica,120,0.69,Media,13,7900000,107,133
+Pop,Anglosajón,109,0.19,Baja,15,7180000,96,122
+Pop,Europa continental,92,0.08,Baja,12,6060000,80,104
+Pop,Asia,80,0.04,Baja,11,5270000,68,92
+Electronic,Europa continental,131,0.84,Alta,12,7300000,118,144
+Electronic,Anglosajón,106,0.09,Baja,10,5910000,93,119
+Electronic,Asia,89,0.05,Baja,14,4960000,77,101
+Electronic,Latinoamérica,81,0.02,Baja,8,4510000,69,93
+Classical,Europa continental,129,0.78,Alta,9,3120000,116,142
+Classical,Anglosajón,107,0.13,Baja,8,2590000,94,120
+Classical,Asia,91,0.06,Baja,10,2200000,79,103
+Classical,Latinoamérica,80,0.03,Baja,6,1930000,68,92
+Country,Anglosajón,135,0.88,Alta,16,6100000,122,148
+Country,Latinoamérica,104,0.07,Baja,7,4700000,91,117
+Country,Europa continental,87,0.03,Baja,6,3930000,75,99
+Country,Asia,78,0.02,Baja,9,3520000,66,90
