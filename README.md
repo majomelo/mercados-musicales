@@ -26,8 +26,13 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## URL pública
+
+Pendiente de publicar en Streamlit Community Cloud (T-22).
+
 ## Estructura
 
-- `app.py`: interfaz Streamlit, navegación y pantallas (P0 Inicio, P1 Recomendación, P2 Evidencia, P3 Ranking por región).
+- `app.py`: interfaz Streamlit, navegación y pantallas (P0 Inicio, P1 Recomendación, P2 Evidencia, P3 Ranking por región), validación de entradas, gráficos, barra superior, «Acerca de los datos» y pie común.
 - `pipeline.py`: funciones reutilizadas del notebook (`recomendar_region`, `nivel_evidencia`, `ranking_por_region`, `normalizar_entrada`).
 - `data/resultados_app.csv`: tabla de 40 filas para la app.
+- `PRUEBA_USUARIOS.md`: guía y registro de la prueba con usuarios externos (T-20/T-21).

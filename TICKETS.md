@@ -38,7 +38,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): abro la URL del repositorio sin iniciar sesión y veo el README. El `requirements.txt` lista las librerías.
 - Fuera de este ticket: código de la app, datos, pantallas.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-02 — Publicar un «hola mundo» en Community Cloud
 - Pantalla / archivo: `app.py`
@@ -47,7 +47,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): abro la URL pública desde otro navegador y veo el título. Un cambio de texto en GitHub se refleja en la URL.
 - Fuera de este ticket: datos, pantallas reales, estilos.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-03 — Subir `pipeline.py` y la tabla `resultados_app`
 - Pantalla / archivo: `pipeline.py`, `data/resultados_app.csv`
@@ -56,7 +56,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): `python -c "import pipeline"` corre sin error. `pandas.read_csv("data/resultados_app.csv")` devuelve 40 filas. El README lista las columnas.
 - Fuera de este ticket: usar los datos en la app, reescribir funciones.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ## Base de la app
 
@@ -67,7 +67,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): la URL pública muestra «40 filas». Recargar la página no vuelve a leer el archivo, o lo hace sin demora notable.
 - Fuera de este ticket: mostrar la tabla completa al usuario, pantallas.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-05 — Esqueleto de navegación entre P0, P1, P2 y P3
 - Pantalla / archivo: `app.py`
@@ -76,7 +76,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): puedo pasar por las cuatro pantallas con los botones provisionales sin errores. Al recargar la página vuelvo a P0.
 - Fuera de este ticket: contenido real de las pantallas, diseño visual.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-06 — Paleta, barra superior y enlace de regreso comunes
 - Pantalla / archivo: `app.py` (o `estilos.py`)
@@ -85,7 +85,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): en P1, P2 y P3 veo el enlace «← Volver» en la misma esquina. Al tocarlo regreso a la pantalla anterior. En P0 no aparece.
 - Fuera de este ticket: contenido de las pantallas, gráficos, «Acerca de los datos».
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ## P0 y P1 (semana 12)
 
@@ -96,7 +96,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): veo la pregunta y los dos botones, con el de género más destacado. «Tengo un género» abre P1. «Tengo un mercado» abre P3. Se lee la fuente al pie.
 - Fuera de este ticket: contenido de P1 y P3, enlace «Acerca de los datos».
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-08 — P1 Recomendación: filtro de género y titular
 - Pantalla / archivo: P1 · Recomendación (`app.py`, `pipeline.py`)
@@ -105,7 +105,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): al elegir Indie veo «Prioriza Latinoamérica». Al elegir Hip Hop veo «Prioriza Anglosajón». Los resultados coinciden con la tabla del Anexo B.
 - Fuera de este ticket: tarjeta de datos, gráfico, mensajes de error, evidencia baja.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-09 — P1: tarjeta con afinidad, evidencia y segunda opción
 - Pantalla / archivo: P1 · Recomendación (`app.py`)
@@ -114,7 +114,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): con Indie veo «+34 %», evidencia «Alta» y segunda opción «Anglosajón». Con Jazz veo «+27 %» y evidencia «Media». El botón «Ver evidencia» abre P2.
 - Fuera de este ticket: gráfico de barras, contenido de P2.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-10 — P1: gráfico de barras de las 4 regiones contra 100
 - Pantalla / archivo: P1 · Recomendación (`app.py`)
@@ -123,7 +123,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): con Indie veo 4 barras y solo la de Latinoamérica en verde, con 134 sobre la barra y la línea de 100 visible. No hay cuadrícula ni leyenda. Al cambiar de género, el verde se mueve a la región correspondiente.
 - Fuera de este ticket: caso de evidencia baja, intervalos de confianza.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-11 — P1: validar lo que escribe el usuario
 - Pantalla / archivo: P1 · Recomendación (`app.py`, `pipeline.py`)
@@ -136,7 +136,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): escribo cada una de las cuatro entradas y veo el mensaje indicado. Ninguna produce un error ni una pantalla en blanco.
 - Fuera de este ticket: caso de evidencia baja, alerta de pocos datos.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-12 — P1: caso de evidencia baja («Sin región dominante»)
 - Pantalla / archivo: P1 · Recomendación (`app.py`)
@@ -145,7 +145,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): con Rock veo «Sin región dominante», sin verde, y resaltadas Latinoamérica y Anglosajón. Con Indie el titular sigue verde y normal.
 - Fuera de este ticket: alerta de pocos datos, pantalla de evidencia.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-13 — P1: alerta cuando hay menos de 5 registros
 - Pantalla / archivo: P1 · Recomendación (`app.py`)
@@ -154,7 +154,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): elijo un género cuya región recomendada tenga menos de 5 registros en la tabla y veo la alerta. Con Indie (7 registros) no aparece.
 - Fuera de este ticket: alerta en el ranking (T-17).
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ## P2 y P3 (semana 13)
 
@@ -165,7 +165,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): con Indie, la línea de Latinoamérica queda entera por encima de 100 y las otras tres la cruzan. Si llego a P2 sin género elegido, vuelvo a P1 con el mensaje «Elige un género para ver la recomendación».
 - Fuera de este ticket: probabilidades, número de registros, texto de ayuda.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-15 — P2: probabilidad, registros y guía de lectura
 - Pantalla / archivo: P2 · Evidencia (`app.py`)
@@ -174,7 +174,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): con Indie veo 93 % para Latinoamérica y «7 registros». Las cuatro probabilidades de cada género suman 100 %. La frase de ayuda es visible.
 - Fuera de este ticket: nuevas métricas, descarga en PDF.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-16 — P3 Ranking por región: selector y ranking de géneros
 - Pantalla / archivo: P3 · Ranking por región (`app.py`, `pipeline.py`)
@@ -183,7 +183,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): al elegir Latinoamérica veo Indie en primer lugar, en verde, con su promedio y su número de registros. Las 4 regiones muestran 10 géneros cada una.
 - Fuera de este ticket: alerta de pocos datos, enlace a P1.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-17 — P3: alerta de pocos datos y enlace a la recomendación
 - Pantalla / archivo: P3 · Ranking por región (`app.py`)
@@ -192,7 +192,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): en Latinoamérica, R&B muestra la alerta. Al tocar Indie llego a P1 con «Prioriza Latinoamérica» ya calculado, sin volver a elegir el género.
 - Fuera de este ticket: validación de texto libre en P3.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-18 — Conectar el flujo completo y todos los regresos
 - Pantalla / archivo: `app.py`
@@ -201,7 +201,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): recorro P0 → P1 → P2 → regreso → P1 → regreso → P0, y P0 → P3 → P1. Nunca me quedo atrapado y no queda ningún botón provisional.
 - Fuera de este ticket: ajustes derivados de la prueba con usuarios.
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ## Cierre (semanas 13 y 14)
 
@@ -212,7 +212,7 @@ Plan de construcción de la app (Streamlit + Community Cloud desde GitHub). Es u
 - Criterio de aceptación (cómo compruebo a mano que está listo): la línea se ve al pie de P0, P1, P2 y P3 sin invadir los resultados.
 - Fuera de este ticket: pantalla «Acerca de los datos» (deseable).
 - Responsable: (en blanco)
-- Estado: pendiente
+- Estado: hecho
 
 ### T-20 — Prueba con usuarios externos
 - Pantalla / archivo: URL pública de la app, documento `PRUEBA_USUARIOS.md`
