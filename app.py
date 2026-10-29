@@ -37,12 +37,9 @@ st.markdown(
     f"""
     <style>
         html, body, [class*="css"] {{ color: {TEXTO}; }}
-        .block-container {{ padding-top: 1.2rem; padding-bottom: 1rem; }}
-        .mm-barra {{
-            display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid #EEEEEE; padding-bottom: 0.4rem; margin-bottom: 1.2rem;
-        }}
-        .mm-marca {{ font-size: 1.05rem; font-weight: 700; letter-spacing: 0.2px; }}
+        .block-container {{ padding-top: 4.5rem; padding-bottom: 1rem; }}
+        .mm-marca {{ font-size: 1.05rem; font-weight: 700; letter-spacing: 0.2px;
+            text-align: center; white-space: nowrap; }}
         .mm-tarjeta {{
             border: 1px solid #EEEEEE; border-radius: 14px; padding: 1.4rem 1.6rem;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05); background: {FONDO};
@@ -116,11 +113,17 @@ def porcentaje(valor: float) -> str:
 
 def barra_superior(mostrar_volver: bool) -> None:
     """Barra común: marca, enlace de regreso y «Acerca de los datos» (T-06/T-19)."""
-    izq, centro, der = st.columns([1, 4, 1.4])
+    izq, centro, der = st.columns([1.4, 4, 1.6], vertical_alignment="center")
     with izq:
         if mostrar_volver:
-            if st.button("← Volver", key=f"volver_{st.session_state.pantalla}"):
+            if st.button(
+                "← Volver",
+                key=f"volver_{st.session_state.pantalla}",
+                width="stretch",
+            ):
                 volver()
+    with centro:
+        st.markdown("<div class='mm-marca'>Mercados Musicales</div>", unsafe_allow_html=True)
     with der:
         with st.popover("Acerca de los datos", width="stretch"):
             st.markdown(
@@ -132,7 +135,7 @@ def barra_superior(mostrar_volver: bool) -> None:
                 "Los datos son sintéticos y los resultados son exploratorios: "
                 "no describen el mercado real."
             )
-    st.markdown("<div class='mm-barra'></div>", unsafe_allow_html=True)
+    st.divider()
 
 
 def pie() -> None:
