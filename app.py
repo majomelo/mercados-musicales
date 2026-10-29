@@ -24,41 +24,140 @@ st.set_page_config(
     layout="wide",
 )
 
-# --- Paleta común (T-06) ---
-VERDE = "#1DB954"
-VERDE_SUAVE = "#E8F8EE"
-GRIS = "#C4C4C4"
-GRIS_OSCURO = "#6B6B6B"
-TEXTO = "#191414"
-FONDO = "#FFFFFF"
+# --- Paleta común (mockup de la Entrega 3) ---
+VERDE = "#12823B"
+VERDE_SUAVE = "#EBF0EC"
+GRIS = "#C3D3CA"
+GRIS_OSCURO = "#5B6762"
+TEXTO = "#10201A"
+FONDO = "#FCFCFA"
+CREMA = "#F5F6F2"
+BORDE = "#DCE2DD"
 FUENTE = "Datos sintéticos (Kaggle, Apache 2.0). Resultados exploratorios."
 
 st.markdown(
     f"""
     <style>
-        html, body, [class*="css"] {{ color: {TEXTO}; }}
-        .block-container {{ padding-top: 4.5rem; padding-bottom: 1rem; }}
-        .mm-marca {{ font-size: 1.05rem; font-weight: 700; letter-spacing: 0.2px;
-            text-align: center; white-space: nowrap; }}
-        .mm-tarjeta {{
-            border: 1px solid #EEEEEE; border-radius: 14px; padding: 1.4rem 1.6rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05); background: {FONDO};
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        html, body, [class*="css"], .stApp {{
+            font-family: 'DM Sans', sans-serif;
+            color: {TEXTO};
         }}
-        .mm-titular {{ font-size: 30px; font-weight: 800; line-height: 1.15; margin: 0; }}
+        .stApp {{ background: {CREMA}; }}
+        [data-testid="stHeader"] {{ background: transparent; }}
+        .block-container {{ padding-top: 4.5rem; padding-bottom: 2rem; max-width: 1180px; }}
+
+        h1, h2, h3, h4 {{
+            font-family: 'Space Grotesk', sans-serif !important;
+            letter-spacing: -0.02em;
+            color: {TEXTO};
+        }}
+
+        .mm-marca {{
+            display: flex; align-items: center; justify-content: center; gap: 0.55rem;
+            font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700;
+            letter-spacing: -0.01em; text-align: center; white-space: nowrap; color: {TEXTO};
+        }}
+        .mm-marca::before {{
+            content: ""; width: 10px; height: 10px; border-radius: 50%;
+            background: {VERDE}; display: inline-block;
+        }}
+        .mm-eyebrow {{
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.14em; color: {GRIS_OSCURO}; margin-bottom: 0.45rem;
+        }}
+        .mm-hero {{
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700;
+            line-height: 1.05; letter-spacing: -0.03em; color: {TEXTO};
+            margin: 0.1rem 0 0.7rem;
+        }}
+        .mm-hero-sub {{
+            font-size: 1.05rem; color: #4A5550; max-width: 660px; margin-bottom: 1.5rem;
+        }}
+
+        .mm-tarjeta {{
+            background: {FONDO}; border: 1px solid {BORDE}; border-left: 4px solid {VERDE};
+            border-radius: 18px; padding: 1.5rem 1.7rem;
+            box-shadow: 0 10px 24px rgba(16, 32, 26, 0.06);
+        }}
+        .mm-tarjeta-baja {{ border-left-color: {GRIS}; }}
+        .mm-titular {{
+            font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700;
+            line-height: 1.15; letter-spacing: -0.02em; margin: 0;
+        }}
         .mm-titular-verde {{ color: {VERDE}; }}
         .mm-titular-gris {{ color: {TEXTO}; }}
-        .mm-secundaria {{ font-size: 0.82rem; color: {GRIS_OSCURO}; text-transform: uppercase;
-            letter-spacing: 0.6px; margin-bottom: 0.25rem; }}
-        .mm-secundaria-valor {{ font-size: 1.05rem; font-weight: 600; }}
-        .mm-dato {{ font-size: 1.05rem; margin-top: 0.55rem; }}
+        .mm-secundaria {{
+            font-size: 0.72rem; color: {GRIS_OSCURO}; text-transform: uppercase;
+            letter-spacing: 0.12em; font-weight: 700; margin-bottom: 0.3rem;
+        }}
+        .mm-secundaria-valor {{
+            font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem;
+            font-weight: 600; color: {TEXTO};
+        }}
+        .mm-dato {{ font-size: 1.02rem; margin-top: 0.6rem; color: #3D4A44; }}
         .mm-evidencia {{ font-weight: 700; }}
-        .mm-pie {{ border-top: 1px solid #EEEEEE; margin-top: 2.5rem; padding-top: 0.7rem;
-            color: {GRIS_OSCURO}; font-size: 0.78rem; }}
-        .mm-fila {{ display: flex; align-items: center; padding: 0.55rem 0.2rem;
-            border-bottom: 1px solid #F2F2F2; }}
-        .mm-genero {{ font-weight: 700; font-size: 1.02rem; }}
+        .mm-pie {{
+            border-top: 1px solid {BORDE}; margin-top: 3rem; padding-top: 0.8rem;
+            color: {GRIS_OSCURO}; font-size: 0.78rem; letter-spacing: 0.01em;
+        }}
+        .mm-fila {{
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.7rem 0.2rem; border-bottom: 1px solid {VERDE_SUAVE};
+        }}
+        .mm-genero {{
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem;
+        }}
         .mm-lider {{ color: {VERDE}; }}
         .mm-streams {{ font-variant-numeric: tabular-nums; }}
+
+        div[data-baseweb="select"] > div,
+        .stTextInput input, .stNumberInput input {{
+            background: {FONDO} !important; border-color: {BORDE} !important;
+            border-radius: 10px !important;
+        }}
+        div[data-baseweb="select"] > div:focus-within,
+        .stTextInput input:focus {{
+            border-color: {VERDE} !important; box-shadow: 0 0 0 1px {VERDE} !important;
+        }}
+        label, .stSelectbox label, .stTextInput label {{
+            font-weight: 600; color: #3D4A44;
+        }}
+
+        .stButton > button, .stFormSubmitButton > button {{
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            border-radius: 10px; border: 1px solid {TEXTO}; color: {TEXTO};
+            background: transparent; transition: all 0.15s ease;
+        }}
+        .stButton > button:hover, .stFormSubmitButton > button:hover {{
+            border-color: {VERDE}; color: {VERDE}; background: {VERDE_SUAVE};
+        }}
+        .stButton > button[kind="primary"], .stFormSubmitButton > button[kind="primary"],
+        .stButton > button[data-testid="stBaseButton-primary"],
+        .stFormSubmitButton > button[data-testid="stBaseButton-primary"] {{
+            background: {VERDE}; border-color: {VERDE}; color: #FFFFFF;
+        }}
+        .stButton > button[kind="primary"]:hover,
+        .stFormSubmitButton > button[kind="primary"]:hover,
+        .stButton > button[data-testid="stBaseButton-primary"]:hover,
+        .stFormSubmitButton > button[data-testid="stBaseButton-primary"]:hover {{
+            background: #0E6A30; border-color: #0E6A30; color: #FFFFFF;
+        }}
+
+        [data-testid="stPopover"] button, [data-testid="stPopoverButton"] {{
+            border-radius: 999px; border: 1px solid {BORDE};
+            background: {FONDO}; color: #3D4A44; font-weight: 600;
+        }}
+        [data-testid="stPopover"] button:hover, [data-testid="stPopoverButton"]:hover {{
+            border-color: {VERDE}; color: {VERDE};
+        }}
+
+        [data-testid="stAlert"] {{
+            border-radius: 12px; border: 1px solid {BORDE}; background: {FONDO};
+        }}
+        hr {{ border-color: {BORDE} !important; }}
     </style>
     """,
     unsafe_allow_html=True,
@@ -153,10 +252,14 @@ def pantalla_inicio() -> None:
     barra_superior(mostrar_volver=False)
     mostrar_flash()
 
-    st.markdown("## ¿Qué quieres decidir hoy?")
-    st.write(
-        "Compara cada región cultural con el promedio de su género y descubre "
-        "dónde lanzar tu sencillo con mayor afinidad."
+    st.markdown("<div class='mm-eyebrow'>P0 · Inicio</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='mm-hero'>¿Qué quieres decidir hoy?</div>", unsafe_allow_html=True
+    )
+    st.markdown(
+        "<div class='mm-hero-sub'>Compara cada región cultural con el promedio de su "
+        "género y descubre dónde lanzar tu sencillo con mayor afinidad.</div>",
+        unsafe_allow_html=True,
     )
 
     col1, col2, _ = st.columns([1.1, 1.1, 2])
@@ -194,6 +297,7 @@ def pantalla_recomendacion() -> None:
     filtros, resultados = st.columns([1, 2.4])
 
     with filtros:
+        st.markdown("<div class='mm-eyebrow'>Filtro</div>", unsafe_allow_html=True)
         st.markdown("### Elige un género")
         if "sel_genero" not in st.session_state and st.session_state.genero:
             st.session_state.sel_genero = st.session_state.genero
@@ -284,15 +388,17 @@ def _tarjeta_recomendacion(genero: str) -> None:
     afinidad_txt = porcentaje(rec["afinidad"] - 100)
     segunda_txt = rec["segunda_opcion"] or "—"
 
+    clase_tarjeta = "mm-tarjeta mm-tarjeta-baja" if baja else "mm-tarjeta"
     st.markdown(
         f"""
-        <div class="mm-tarjeta">
+        <div class="{clase_tarjeta}">
           <div style="display:flex; gap:1.8rem; align-items:flex-start;">
             <div style="min-width:150px;">
               <div class="mm-secundaria">Segunda opción</div>
               <div class="mm-secundaria-valor">{segunda_txt}</div>
             </div>
             <div style="flex:1;">
+              <div class="mm-eyebrow">Recomendación</div>
               <div class="mm-titular {clase}">{titular}</div>
               <div class="mm-dato">{afinidad_txt} frente al promedio del género</div>
               <div class="mm-dato">Evidencia:
@@ -361,7 +467,8 @@ def _grafico_afinidad(genero: str) -> None:
         (barras + etiquetas + referencia)
         .properties(height=300, padding={"top": 10})
         .configure_view(strokeWidth=0)
-        .configure_axis(grid=False),
+        .configure_axis(grid=False)
+        .configure(font="DM Sans"),
         width="stretch",
     )
 
@@ -381,6 +488,7 @@ def pantalla_evidencia() -> None:
     detalle = rec["detalle"]
     recomendada = rec["region_recomendada"]
 
+    st.markdown("<div class='mm-eyebrow'>P2 · Evidencia</div>", unsafe_allow_html=True)
     st.markdown(f"## Evidencia · {genero}")
     st.write(
         "Cada punto es la afinidad de la región; la línea muestra el rango del 90 % "
@@ -444,7 +552,8 @@ def pantalla_evidencia() -> None:
             (lineas + puntos + etiquetas + referencia)
             .properties(height=320)
             .configure_view(strokeWidth=0)
-            .configure_axis(grid=False),
+            .configure_axis(grid=False)
+            .configure(font="DM Sans"),
             width="stretch",
         )
 
@@ -479,6 +588,7 @@ def pantalla_ranking() -> None:
     filtros, resultados = st.columns([1, 2.4])
 
     with filtros:
+        st.markdown("<div class='mm-eyebrow'>Filtro</div>", unsafe_allow_html=True)
         st.markdown("### Elige una región")
         st.selectbox(
             "Región",
@@ -499,6 +609,7 @@ def pantalla_ranking() -> None:
         ranking = ranking_por_region(region)
         lider = ranking.iloc[0]["genero"]
 
+        st.markdown("<div class='mm-eyebrow'>P3 · Ranking por región</div>", unsafe_allow_html=True)
         st.markdown(f"## Ranking · {region}")
         st.write(
             f"El género líder es **{lider}**. Toca un género para ver su recomendación."
