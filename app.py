@@ -165,15 +165,20 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
   box-shadow:0 18px 40px rgba(16,58,47,.18);
 }
 .st-key-journey_dark::after { content:""; position:absolute; right:-60px; bottom:-90px; width:240px; height:240px; border-radius:50%; border:1px solid rgba(37,230,141,.25); }
-.st-key-journey_light { background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); }
+.st-key-journey_light { position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); }
 .st-key-journey_dark:hover, .st-key-journey_light:hover { transform:translateY(-2px); box-shadow:0 18px 44px rgba(17,64,43,.12); }
-.mm-journey-content { display:flex; align-items:center; gap:18px; position:relative; z-index:2; }
+.mm-journey-content { display:flex; align-items:center; justify-content:space-between; gap:18px; position:relative; z-index:2; }
+.mm-journey-main { display:flex; align-items:center; gap:18px; min-width:0; }
 .mm-journey-icon { width:58px; height:58px; flex:0 0 58px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
 .mm-journey-icon svg { width:28px; height:28px; }
 .mm-journey-icon.dark { background:rgba(37,230,141,.12); border:1px solid rgba(37,230,141,.25); color:var(--green-bright); }
 .mm-journey-icon.light { background:var(--mint-100); color:var(--green-deep); }
 .mm-journey-copy { display:flex; align-items:center; flex-wrap:wrap; gap:10px; font-size:clamp(20px,2.2vw,27px); font-weight:800; letter-spacing:-.03em; line-height:1.15; }
 .mm-journey-copy svg { width:20px; height:20px; }
+.mm-journey-arrow { width:56px; height:56px; flex:0 0 56px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.mm-journey-arrow svg { width:22px; height:22px; }
+.mm-journey-arrow.dark { background:linear-gradient(100deg,#00B862,#27E68A); color:#062318; }
+.mm-journey-arrow.light { background:var(--mint-100); color:var(--green-deep); }
 .st-key-journey_dark .mm-journey-copy { color:#fff; }
 .st-key-journey_dark .mm-journey-copy svg { color:var(--green-bright); }
 .st-key-journey_dark .mm-journey-q { color:rgba(255,255,255,.9); }
@@ -195,14 +200,21 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
 .stSelectbox div[data-baseweb="select"]:focus-within, .stTextInput input:focus {
   outline:3px solid rgba(0,201,107,.35) !important; outline-offset:2px;
 }
-[class*="st-key-go_genero"] button, [class*="st-key-go_mercado"] button {
-  width:56px !important; height:56px !important; min-height:56px !important; padding:0 !important;
-  border-radius:50% !important; display:flex; align-items:center; justify-content:center;
-  font-size:24px !important; font-weight:800 !important; line-height:1;
+[class*="st-key-cardlink_genero"], [class*="st-key-cardlink_mercado"] {
+  position:absolute !important; inset:0 !important; z-index:20 !important;
+  margin:0 !important; padding:0 !important;
 }
-[class*="st-key-go_genero"] button { background:linear-gradient(100deg,#00B862,#27E68A) !important; color:#062318 !important; border:none !important; }
-[class*="st-key-go_mercado"] button { background:var(--mint-100) !important; color:var(--green-deep) !important; border:none !important; }
-[class*="st-key-go_genero"] button:hover, [class*="st-key-go_mercado"] button:hover { transform:scale(1.05); }
+[class*="st-key-cardlink_genero"] button, [class*="st-key-cardlink_mercado"] button {
+  width:100% !important; height:100% !important; min-height:100% !important;
+  margin:0 !important; padding:0 !important; border:none !important;
+  background:transparent !important; box-shadow:none !important;
+  color:transparent !important; font-size:0 !important; cursor:pointer;
+}
+[class*="st-key-cardlink_genero"] button:focus-visible,
+[class*="st-key-cardlink_mercado"] button:focus-visible {
+  outline:3px solid rgba(0,201,107,.55) !important; outline-offset:-4px !important;
+  border-radius:22px !important;
+}
 
 .st-key-sidebar {
   background:var(--surface); border:1px solid var(--border); border-radius:22px;
@@ -405,14 +417,8 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
   .mm-home-title { font-size:clamp(30px,9vw,40px); }
   .mm-home-sub { font-size:15px; }
 
-  .st-key-journey_dark [data-testid="stHorizontalBlock"],
-  .st-key-journey_light [data-testid="stHorizontalBlock"] { flex-wrap:nowrap !important; align-items:center !important; gap:8px !important; }
-  .st-key-journey_dark [data-testid="stColumn"]:first-child,
-  .st-key-journey_light [data-testid="stColumn"]:first-child { flex:1 1 auto !important; width:auto !important; min-width:0 !important; }
-  .st-key-journey_dark [data-testid="stColumn"]:last-child,
-  .st-key-journey_light [data-testid="stColumn"]:last-child { flex:0 0 48px !important; width:48px !important; }
-  [class*="st-key-go_genero"] button, [class*="st-key-go_mercado"] button { width:46px !important; height:46px !important; min-height:46px !important; font-size:19px !important; }
-  .mm-journey-content { gap:12px; }
+  .mm-journey-arrow { width:46px !important; height:46px !important; flex-basis:46px !important; }
+  .mm-journey-main { gap:12px; }
   .mm-journey-copy { gap:7px; }
 
   .mm-banner { padding:24px 18px; border-radius:18px; }
@@ -758,29 +764,27 @@ def pantalla_inicio() -> None:
         unsafe_allow_html=True,
     )
     with st.container(key="journey_dark"):
-        c1, c2 = st.columns([10, 1.1], vertical_alignment="center", gap="small")
-        with c1:
-            st.markdown(
-                f'<div class="mm-journey-content"><div class="mm-journey-icon dark">{ICON_NOTE}</div>'
-                f'<div class="mm-journey-copy"><span>Tengo un género</span>{ICON_ARROW}'
-                f'<span class="mm-journey-q">¿dónde lo promuevo?</span></div></div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            if st.button("→", key="go_genero", help="Buscar la región para mi género"):
-                abrir_recomendacion()
+        st.markdown(
+            f'<div class="mm-journey-content"><div class="mm-journey-main">'
+            f'<div class="mm-journey-icon dark">{ICON_NOTE}</div>'
+            f'<div class="mm-journey-copy"><span>Tengo un género</span>{ICON_ARROW}'
+            f'<span class="mm-journey-q">¿dónde lo promuevo?</span></div></div>'
+            f'<span class="mm-journey-arrow dark">{ICON_ARROW}</span></div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Tengo un género: ¿dónde lo promuevo?", key="cardlink_genero"):
+            abrir_recomendacion()
     with st.container(key="journey_light"):
-        c1, c2 = st.columns([10, 1.1], vertical_alignment="center", gap="small")
-        with c1:
-            st.markdown(
-                f'<div class="mm-journey-content"><div class="mm-journey-icon light">{ICON_BARS}</div>'
-                f'<div class="mm-journey-copy"><span>Tengo un mercado</span>{ICON_ARROW}'
-                f'<span class="mm-journey-q">¿qué géneros funcionan allí?</span></div></div>',
-                unsafe_allow_html=True,
-            )
-        with c2:
-            if st.button("→", key="go_mercado", help="Ver el ranking de una región"):
-                navegar("P3")
+        st.markdown(
+            f'<div class="mm-journey-content"><div class="mm-journey-main">'
+            f'<div class="mm-journey-icon light">{ICON_BARS}</div>'
+            f'<div class="mm-journey-copy"><span>Tengo un mercado</span>{ICON_ARROW}'
+            f'<span class="mm-journey-q">¿qué géneros funcionan allí?</span></div></div>'
+            f'<span class="mm-journey-arrow light">{ICON_ARROW}</span></div>',
+            unsafe_allow_html=True,
+        )
+        if st.button("Tengo un mercado: ¿qué géneros funcionan allí?", key="cardlink_mercado"):
+            navegar("P3")
 
 
 # ---------------------------------------------------------------------------
