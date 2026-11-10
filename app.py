@@ -588,7 +588,7 @@ def barra_superior(vista: str) -> None:
             st.markdown(
                 f'<div class="mm-brand">{SPOTIFY_LOGO}<span class="mm-brand-text">'
                 f'<span class="mm-brand-line">Mercados Musicales '
-                f'<span class="mm-brand-year">· Spotify 2024</span></span>'
+                f'<span class="mm-brand-year">· Spotify 2026</span></span>'
                 f'<span class="mm-mobile-view">{vista}</span></span></div>',
                 unsafe_allow_html=True,
             )
@@ -599,7 +599,7 @@ def barra_superior(vista: str) -> None:
                 st.markdown(
                     "**Mercados Musicales** compara 10 géneros en 4 regiones culturales "
                     "(Latinoamérica, Anglosajón, Asia y Europa continental).\n\n"
-                    "- Base: 500 registros sintéticos de Spotify 2024 (Kaggle, Apache 2.0).\n"
+                    "- Base: 500 registros sintéticos de Spotify 2026 (Kaggle, Apache 2.0).\n"
                     "- Índice de afinidad: 100 = promedio del género.\n"
                     "- Probabilidad: 5.000 escenarios bootstrap precalculados.\n\n"
                     "Los datos son sintéticos y los resultados son exploratorios: "
@@ -774,7 +774,7 @@ def ranking_chart(ranking) -> None:
 
 def pie() -> None:
     st.markdown(
-        '<div class="mm-footer"><span>Basado en 500 registros de Spotify 2024 agrupados en 4 regiones '
+        '<div class="mm-footer"><span>Basado en 500 registros de Spotify 2026 agrupados en 4 regiones '
         "· Datos sintéticos (Kaggle, licencia Apache 2.0)</span></div>",
         unsafe_allow_html=True,
     )
