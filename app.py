@@ -71,6 +71,8 @@ def _concert_uri() -> str:
 
 CONCERT = f"url('{_concert_uri()}')" if _concert_uri() else "linear-gradient(120deg,#0B5E3B,#00C96B)"
 GLOBE_CSS = _svg_uri(ICON_GLOBE)
+NOTE_CSS = _svg_uri(ICON_NOTE.replace("currentColor", "#25E68D"))
+BARS_CSS = _svg_uri(ICON_BARS.replace("currentColor", "#007A4B"))
 
 # ---------------------------------------------------------------------------
 # Sistema de diseño
@@ -155,36 +157,75 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
 .mm-grad { background:linear-gradient(100deg,#00B862 0%,#007A4B 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .mm-home-sub { font-size:17px; font-weight:500; color:var(--text-secondary); margin:0; }
 
-.st-key-journey_dark, .st-key-journey_light {
-  max-width:860px; margin:0 auto 24px; border-radius:22px; padding:24px 30px;
-  transition:transform .2s ease, box-shadow .2s ease;
+[class*="st-key-cardlink_genero"], [class*="st-key-cardlink_mercado"] {
+  width:100% !important; max-width:860px; margin:0 auto 24px !important;
 }
-.st-key-journey_dark {
-  position:relative; overflow:hidden; color:#fff;
-  background:radial-gradient(600px 300px at 92% 20%, rgba(37,230,141,.22), transparent 60%), linear-gradient(115deg,#103A2F 0%,#0B2A22 60%,#124C39 100%);
-  box-shadow:0 18px 40px rgba(16,58,47,.18);
+[class*="st-key-cardlink_genero"] button, [class*="st-key-cardlink_mercado"] button {
+  width:100% !important; min-height:124px !important; border-radius:22px !important;
+  padding:24px 30px !important; display:flex !important; align-items:center !important;
+  justify-content:flex-start !important; gap:18px !important; text-align:left !important;
+  white-space:normal !important; cursor:pointer !important;
+  -webkit-appearance:none !important; appearance:none !important; text-decoration:none !important;
+  transition:transform .2s ease, box-shadow .2s ease, background .18s ease !important;
+  position:relative !important; overflow:hidden !important;
 }
-.st-key-journey_dark::after { content:""; position:absolute; right:-60px; bottom:-90px; width:240px; height:240px; border-radius:50%; border:1px solid rgba(37,230,141,.25); }
-.st-key-journey_light { position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow); }
-.st-key-journey_dark:hover, .st-key-journey_light:hover { transform:translateY(-2px); box-shadow:0 18px 44px rgba(17,64,43,.12); }
-.mm-journey-content { display:flex; align-items:center; justify-content:space-between; gap:18px; position:relative; z-index:2; }
-.mm-journey-main { display:flex; align-items:center; gap:18px; min-width:0; }
-.mm-journey-icon { width:58px; height:58px; flex:0 0 58px; border-radius:16px; display:flex; align-items:center; justify-content:center; }
-.mm-journey-icon svg { width:28px; height:28px; }
-.mm-journey-icon.dark { background:rgba(37,230,141,.12); border:1px solid rgba(37,230,141,.25); color:var(--green-bright); }
-.mm-journey-icon.light { background:var(--mint-100); color:var(--green-deep); }
-.mm-journey-copy { display:flex; align-items:center; flex-wrap:wrap; gap:10px; font-size:clamp(20px,2.2vw,27px); font-weight:800; letter-spacing:-.03em; line-height:1.15; }
-.mm-journey-copy svg { width:20px; height:20px; }
-.mm-journey-arrow { width:56px; height:56px; flex:0 0 56px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
-.mm-journey-arrow svg { width:22px; height:22px; }
-.mm-journey-arrow.dark { background:linear-gradient(100deg,#00B862,#27E68A); color:#062318; }
-.mm-journey-arrow.light { background:var(--mint-100); color:var(--green-deep); }
-.st-key-journey_dark .mm-journey-copy { color:#fff; }
-.st-key-journey_dark .mm-journey-copy svg { color:var(--green-bright); }
-.st-key-journey_dark .mm-journey-q { color:rgba(255,255,255,.9); }
-.st-key-journey_light .mm-journey-copy { color:var(--ink); }
-.st-key-journey_light .mm-journey-copy svg { color:var(--green-deep); }
-.st-key-journey_light .mm-journey-q { color:#3D4A44; }
+[class*="st-key-cardlink_genero"] button {
+  background:radial-gradient(600px 300px at 92% 20%, rgba(37,230,141,.22), transparent 60%), linear-gradient(115deg,#103A2F 0%,#0B2A22 60%,#124C39 100%) !important;
+  border:none !important; color:#fff !important;
+  box-shadow:0 18px 40px rgba(16,58,47,.18) !important;
+}
+[class*="st-key-cardlink_mercado"] button {
+  background:var(--surface) !important; border:1px solid var(--border) !important;
+  color:var(--ink) !important; box-shadow:var(--shadow) !important;
+}
+[class*="st-key-cardlink_genero"] button:hover, [class*="st-key-cardlink_mercado"] button:hover {
+  transform:translateY(-2px) !important;
+  box-shadow:0 18px 44px rgba(17,64,43,.16) !important;
+}
+[class*="st-key-cardlink_genero"] button::before, [class*="st-key-cardlink_mercado"] button::before {
+  content:""; width:58px; height:58px; flex:0 0 58px; border-radius:16px;
+  background-position:center; background-size:28px 28px; background-repeat:no-repeat;
+}
+[class*="st-key-cardlink_genero"] button::before {
+  background-color:rgba(37,230,141,.12); border:1px solid rgba(37,230,141,.25);
+  background-image:url("__NOTE_ICON__");
+}
+[class*="st-key-cardlink_mercado"] button::before {
+  background-color:var(--mint-100); border:1px solid transparent;
+  background-image:url("__BARS_ICON__");
+}
+[class*="st-key-cardlink_genero"] button::after, [class*="st-key-cardlink_mercado"] button::after {
+  content:"→"; width:56px; height:56px; flex:0 0 56px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; font-weight:800; line-height:1; margin-left:auto;
+}
+[class*="st-key-cardlink_genero"] button::after {
+  background:linear-gradient(100deg,#00B862,#27E68A); color:#062318;
+}
+[class*="st-key-cardlink_mercado"] button::after {
+  background:var(--mint-100); color:var(--green-deep);
+}
+[class*="st-key-cardlink_genero"] button [data-testid="stMarkdownContainer"],
+[class*="st-key-cardlink_mercado"] button [data-testid="stMarkdownContainer"] {
+  flex:1 1 auto !important; text-align:left !important; min-width:0 !important;
+  font-size:clamp(20px,2.2vw,27px) !important; font-weight:800 !important;
+  letter-spacing:-.03em !important; line-height:1.15 !important;
+}
+[class*="st-key-cardlink_genero"] button [data-testid="stMarkdownContainer"] { color:#fff !important; }
+[class*="st-key-cardlink_mercado"] button [data-testid="stMarkdownContainer"] { color:var(--ink) !important; }
+[class*="st-key-cardlink_genero"] button p,
+[class*="st-key-cardlink_mercado"] button p {
+  font-size:inherit !important; font-weight:inherit !important;
+  letter-spacing:inherit !important; line-height:inherit !important; margin:0 !important;
+  text-align:left !important; white-space:normal !important;
+}
+[class*="st-key-cardlink_genero"] button p { color:#fff !important; }
+[class*="st-key-cardlink_mercado"] button p { color:var(--ink) !important; }
+[class*="st-key-cardlink_genero"] button:focus-visible,
+[class*="st-key-cardlink_mercado"] button:focus-visible {
+  outline:3px solid rgba(0,201,107,.55) !important; outline-offset:-4px !important;
+  border-radius:22px !important;
+}
 
 .stButton > button, .stFormSubmitButton > button {
   font-family:'Inter', sans-serif; font-weight:700; border-radius:10px;
@@ -200,22 +241,6 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
 .stSelectbox div[data-baseweb="select"]:focus-within, .stTextInput input:focus {
   outline:3px solid rgba(0,201,107,.35) !important; outline-offset:2px;
 }
-[class*="st-key-cardlink_genero"], [class*="st-key-cardlink_mercado"] {
-  position:absolute !important; inset:0 !important; z-index:20 !important;
-  margin:0 !important; padding:0 !important;
-}
-[class*="st-key-cardlink_genero"] button, [class*="st-key-cardlink_mercado"] button {
-  width:100% !important; height:100% !important; min-height:100% !important;
-  margin:0 !important; padding:0 !important; border:none !important;
-  background:transparent !important; box-shadow:none !important;
-  color:transparent !important; font-size:0 !important; cursor:pointer;
-}
-[class*="st-key-cardlink_genero"] button:focus-visible,
-[class*="st-key-cardlink_mercado"] button:focus-visible {
-  outline:3px solid rgba(0,201,107,.55) !important; outline-offset:-4px !important;
-  border-radius:22px !important;
-}
-
 .st-key-sidebar {
   background:var(--surface); border:1px solid var(--border); border-radius:22px;
   padding:26px 24px; box-shadow:var(--shadow); min-height:620px; position:sticky; top:104px;
@@ -397,8 +422,16 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
   .mm-ev-axis-row { grid-template-columns:86px 1fr; } .mm-ev-axis-row > div:last-child { display:none; }
   .mm-ev-axis-title { margin-left:96px; }
   .mm-card-head { flex-direction:column; gap:4px; } .mm-card-note { white-space:normal; }
-  .mm-journey-copy { font-size:19px; } .mm-journey-icon { width:48px; height:48px; flex-basis:48px; }
-  .st-key-journey_dark, .st-key-journey_light { padding:20px 18px; }
+  [class*="st-key-cardlink_genero"] button, [class*="st-key-cardlink_mercado"] button {
+    min-height:104px !important; padding:18px 16px !important; gap:12px !important; border-radius:18px !important;
+  }
+  [class*="st-key-cardlink_genero"] button::before, [class*="st-key-cardlink_mercado"] button::before {
+    width:48px !important; height:48px !important; flex-basis:48px !important; background-size:24px 24px !important;
+  }
+  [class*="st-key-cardlink_genero"] button::after, [class*="st-key-cardlink_mercado"] button::after {
+    width:46px !important; height:46px !important; flex-basis:46px !important; font-size:20px !important;
+  }
+  [class*="st-key-cardlink_genero"] button p, [class*="st-key-cardlink_mercado"] button p { font-size:18px !important; }
   .st-key-chart_afinidad, .st-key-chart_evidencia, .st-key-chart_ranking { padding:22px 16px; }
   .st-key-topnav [data-testid="stPopover"] button { font-size:0 !important; }
   .st-key-topnav [data-testid="stPopover"] button::before { font-size:13px; }
@@ -416,10 +449,6 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
   .mm-home-hero { margin:2.4rem auto 1.6rem; }
   .mm-home-title { font-size:clamp(30px,9vw,40px); }
   .mm-home-sub { font-size:15px; }
-
-  .mm-journey-arrow { width:46px !important; height:46px !important; flex-basis:46px !important; }
-  .mm-journey-main { gap:12px; }
-  .mm-journey-copy { gap:7px; }
 
   .mm-banner { padding:24px 18px; border-radius:18px; }
   .mm-banner-photo, .mm-banner::after { display:none; }
@@ -460,7 +489,7 @@ h1, h2, h3, h4 { font-family:'Inter', sans-serif !important; letter-spacing:-.02
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition:none !important; animation:none !important; }
 }
-""".replace("__GLOBE__", GLOBE_CSS)
+""".replace("__GLOBE__", GLOBE_CSS).replace("__NOTE_ICON__", NOTE_CSS).replace("__BARS_ICON__", BARS_CSS)
 
 st.markdown(
     f"<style>{CSS}\n:root{{--concert:{CONCERT};}}</style>",
@@ -763,28 +792,10 @@ def pantalla_inicio() -> None:
         '<p class="mm-home-sub">Elige el punto de partida de tu decisión de promoción.</p></div>',
         unsafe_allow_html=True,
     )
-    with st.container(key="journey_dark"):
-        st.markdown(
-            f'<div class="mm-journey-content"><div class="mm-journey-main">'
-            f'<div class="mm-journey-icon dark">{ICON_NOTE}</div>'
-            f'<div class="mm-journey-copy"><span>Tengo un género</span>{ICON_ARROW}'
-            f'<span class="mm-journey-q">¿dónde lo promuevo?</span></div></div>'
-            f'<span class="mm-journey-arrow dark">{ICON_ARROW}</span></div>',
-            unsafe_allow_html=True,
-        )
-        if st.button("Tengo un género: ¿dónde lo promuevo?", key="cardlink_genero"):
-            abrir_recomendacion()
-    with st.container(key="journey_light"):
-        st.markdown(
-            f'<div class="mm-journey-content"><div class="mm-journey-main">'
-            f'<div class="mm-journey-icon light">{ICON_BARS}</div>'
-            f'<div class="mm-journey-copy"><span>Tengo un mercado</span>{ICON_ARROW}'
-            f'<span class="mm-journey-q">¿qué géneros funcionan allí?</span></div></div>'
-            f'<span class="mm-journey-arrow light">{ICON_ARROW}</span></div>',
-            unsafe_allow_html=True,
-        )
-        if st.button("Tengo un mercado: ¿qué géneros funcionan allí?", key="cardlink_mercado"):
-            navegar("P3")
+    if st.button("Tengo un género  →  ¿dónde lo promuevo?", key="cardlink_genero"):
+        abrir_recomendacion()
+    if st.button("Tengo un mercado  →  ¿qué géneros funcionan allí?", key="cardlink_mercado"):
+        navegar("P3")
 
 
 # ---------------------------------------------------------------------------
