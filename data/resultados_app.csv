@@ -1,41 +1,41 @@
 genero,region,afinidad,prob_mejor,evidencia,n_registros,promedio_streams,intervalo_inf,intervalo_sup
-Indie,Latinoamérica,134,0.93,Alta,7,8450000,121,147
-Indie,Anglosajón,105,0.04,Baja,12,6620000,92,118
-Indie,Asia,82,0.02,Baja,15,5170000,70,94
-Indie,Europa continental,79,0.01,Baja,9,4980000,67,91
-Hip Hop,Anglosajón,128,0.81,Alta,14,9200000,115,141
-Hip Hop,Latinoamérica,108,0.12,Baja,11,7760000,95,121
-Hip Hop,Europa continental,88,0.05,Baja,10,6320000,76,100
-Hip Hop,Asia,76,0.02,Baja,13,5460000,64,88
-Jazz,Europa continental,127,0.62,Media,8,4980000,114,140
-Jazz,Anglosajón,110,0.25,Baja,10,4310000,97,123
-Jazz,Latinoamérica,95,0.09,Baja,9,3720000,83,107
-Jazz,Asia,78,0.04,Baja,12,3050000,66,90
-Rock,Latinoamérica,112,0.37,Baja,16,7100000,98,126
-Rock,Anglosajón,108,0.33,Baja,18,6850000,94,122
-Rock,Europa continental,95,0.18,Baja,15,6020000,83,107
-Rock,Asia,85,0.12,Baja,14,5390000,73,97
-R&B,Anglosajón,130,0.75,Alta,11,6800000,117,143
-R&B,Europa continental,109,0.14,Baja,9,5700000,96,122
-R&B,Asia,90,0.07,Baja,7,4710000,78,102
-R&B,Latinoamérica,84,0.04,Baja,4,4390000,70,98
-Reggaeton,Asia,125,0.66,Media,13,8900000,112,138
-Reggaeton,Anglosajón,112,0.21,Baja,12,7970000,99,125
-Reggaeton,Europa continental,96,0.09,Baja,10,6830000,84,108
-Reggaeton,Latinoamérica,88,0.04,Baja,17,6260000,76,100
-Pop,Latinoamérica,120,0.69,Media,13,7900000,107,133
-Pop,Anglosajón,109,0.19,Baja,15,7180000,96,122
-Pop,Europa continental,92,0.08,Baja,12,6060000,80,104
-Pop,Asia,80,0.04,Baja,11,5270000,68,92
-Electronic,Europa continental,131,0.84,Alta,12,7300000,118,144
-Electronic,Anglosajón,106,0.09,Baja,10,5910000,93,119
-Electronic,Asia,89,0.05,Baja,14,4960000,77,101
-Electronic,Latinoamérica,81,0.02,Baja,8,4510000,69,93
-Classical,Europa continental,129,0.78,Alta,9,3120000,116,142
-Classical,Anglosajón,107,0.13,Baja,8,2590000,94,120
-Classical,Asia,91,0.06,Baja,10,2200000,79,103
-Classical,Latinoamérica,80,0.03,Baja,6,1930000,68,92
-Country,Anglosajón,135,0.88,Alta,16,6100000,122,148
-Country,Latinoamérica,104,0.07,Baja,7,4700000,91,117
-Country,Europa continental,87,0.03,Baja,6,3930000,75,99
-Country,Asia,78,0.02,Baja,9,3520000,66,90
+Classical,Europa continental,110.3,0.6842,Media,30,3021388667,99.0,121.2
+Classical,Latinoamérica,93.3,0.1566,Baja,10,2557642000,67.9,118.1
+Classical,Asia,94.8,0.1012,Baja,17,2598567059,78.8,111.0
+Classical,Anglosajón,89.7,0.058,Baja,15,2458871333,71.7,107.4
+EDM,Anglosajón,124.6,0.8068,Alta,10,3073009000,98.5,152.4
+EDM,Europa continental,103.5,0.1524,Baja,24,2553064583,87.8,118.0
+EDM,Latinoamérica,75.1,0.0224,Baja,6,1853475000,44.0,109.7
+EDM,Asia,83.6,0.0184,Baja,11,2061563636,60.1,108.1
+Hip Hop,Anglosajón,125.7,0.8088,Alta,12,2871062500,103.5,149.6
+Hip Hop,Asia,95.0,0.0926,Baja,9,2169746667,65.4,123.9
+Hip Hop,Latinoamérica,91.9,0.075,Baja,6,2100326667,61.7,124.2
+Hip Hop,Europa continental,90.3,0.0236,Baja,22,2062549091,74.3,105.6
+Indie,Latinoamérica,133.7,0.9306,Alta,7,3559092857,107.9,158.8
+Indie,Anglosajón,96.6,0.0396,Baja,14,2571683571,76.1,117.1
+Indie,Europa continental,95.2,0.0238,Baja,21,2534588571,80.5,109.6
+Indie,Asia,88.9,0.006,Baja,8,2367486250,67.7,108.9
+Jazz,Asia,127.4,0.6218,Media,10,3068783000,102.3,152.8
+Jazz,Latinoamérica,117.0,0.2944,Baja,9,2817427778,90.1,144.0
+Jazz,Anglosajón,78.7,0.0796,Baja,5,1896066000,20.4,132.1
+Jazz,Europa continental,83.1,0.0042,Baja,19,2002040526,66.7,99.1
+K-pop,Asia,109.7,0.5396,Media,11,3028262727,86.7,132.0
+K-pop,Europa continental,97.6,0.1976,Baja,14,2695448571,76.5,117.2
+K-pop,Latinoamérica,97.7,0.139,Baja,11,2697682727,80.1,116.0
+K-pop,Anglosajón,96.0,0.1238,Baja,12,2649293333,76.8,114.5
+Pop,Asia,112.3,0.4858,Media,6,3017696667,73.1,148.6
+Pop,Latinoamérica,108.3,0.3088,Baja,12,2910875000,86.8,128.9
+Pop,Europa continental,104.9,0.2012,Baja,16,2818770000,88.4,121.5
+Pop,Anglosajón,74.7,0.0042,Baja,10,2008209000,55.1,95.5
+R&B,Asia,109.4,0.5362,Media,8,3039395000,83.9,134.2
+R&B,Europa continental,99.9,0.1852,Baja,22,2776850000,89.8,110.3
+R&B,Anglosajón,97.4,0.176,Baja,7,2706424286,75.2,119.0
+R&B,Latinoamérica,86.4,0.1026,Baja,4,2400237500,56.2,116.4
+Reggaeton,Anglosajón,113.1,0.5062,Media,12,2720039167,87.3,138.3
+Reggaeton,Europa continental,108.6,0.3778,Baja,15,2609914667,85.9,131.4
+Reggaeton,Asia,92.0,0.107,Baja,11,2212640000,64.5,118.8
+Reggaeton,Latinoamérica,67.0,0.009,Baja,6,1610261667,40.6,96.8
+Rock,Latinoamérica,105.5,0.3748,Baja,10,2700851000,77.9,132.2
+Rock,Asia,102.2,0.2648,Baja,10,2615131000,76.3,127.2
+Rock,Anglosajón,103.3,0.2602,Baja,13,2642422308,84.2,124.1
+Rock,Europa continental,95.2,0.1002,Baja,25,2436304800,80.4,109.3

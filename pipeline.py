@@ -1,65 +1,85 @@
 """Pipeline de Mercados Musicales.
 
-Funciones ya probadas en el notebook; se reutilizan sin reescribir.
-Lee la tabla precalculada ``data/resultados_app.csv`` (40 filas).
+Funciones del notebook del proyecto (PROYECTO_ANALITICA_APLICADA_Entrega3.ipynb),
+reutilizadas en la app. Lee la tabla precalculada ``data/resultados_app.csv``
+(40 filas = 10 géneros x 4 regiones), que el notebook genera con el índice de
+afinidad y 5.000 remuestreos bootstrap (semilla 42).
 """
 
 from __future__ import annotations
 
 import difflib
+import unicodedata
 from pathlib import Path
 
 import pandas as pd
 
 DATA_PATH = Path(__file__).parent / "data" / "resultados_app.csv"
 
+# Los 10 géneros de la base Spotify 2024 (mismos nombres que la columna Genre).
 GENEROS = [
     "Indie",
     "Hip Hop",
+    "EDM",
     "Jazz",
-    "Rock",
+    "K-pop",
+    "Pop",
     "R&B",
     "Reggaeton",
-    "Pop",
-    "Electronic",
     "Classical",
-    "Country",
+    "Rock",
 ]
 
 REGIONES = ["Latinoamérica", "Anglosajón", "Asia", "Europa continental"]
 
-# País (minúsculas, sin tildes) -> región. Solo para normalizar entradas.
+# Solo los 20 países que existen en la base, en español y en inglés.
+# Un país que no está en la base (p. ej. Colombia) no se traduce: la app
+# muestra la lista de opciones, porque no hay datos que lo respalden.
 PAIS_A_REGION = {
+    # Anglosajón
+    "estados unidos": "Anglosajón", "united states": "Anglosajón", "usa": "Anglosajón",
+    "canada": "Anglosajón",
+    "reino unido": "Anglosajón", "united kingdom": "Anglosajón", "uk": "Anglosajón",
+    "australia": "Anglosajón",
+    "sudafrica": "Anglosajón", "south africa": "Anglosajón",
     # Latinoamérica
     "mexico": "Latinoamérica",
-    "colombia": "Latinoamérica",
+    "brasil": "Latinoamérica", "brazil": "Latinoamérica",
     "argentina": "Latinoamérica",
-    "peru": "Latinoamérica",
-    "chile": "Latinoamérica",
-    "brasil": "Latinoamérica",
-    "venezuela": "Latinoamérica",
-    "ecuador": "Latinoamérica",
-    # Anglosajón
-    "usa": "Anglosajón",
-    "estados unidos": "Anglosajón",
-    "united states": "Anglosajón",
-    "reino unido": "Anglosajón",
-    "uk": "Anglosajón",
-    "canada": "Anglosajón",
-    "australia": "Anglosajón",
     # Asia
-    "china": "Asia",
-    "japon": "Asia",
-    "japan": "Asia",
-    "corea": "Asia",
+    "corea del sur": "Asia", "corea": "Asia", "south korea": "Asia",
+    "japon": "Asia", "japan": "Asia",
+    "indonesia": "Asia",
     "india": "Asia",
     # Europa continental
-    "espana": "Europa continental",
-    "españa": "Europa continental",
-    "francia": "Europa continental",
-    "alemania": "Europa continental",
-    "italia": "Europa continental",
-    "portugal": "Europa continental",
+    "italia": "Europa continental", "italy": "Europa continental",
+    "espana": "Europa continental", "spain": "Europa continental",
+    "francia": "Europa continental", "france": "Europa continental",
+    "alemania": "Europa continental", "germany": "Europa continental",
+    "paises bajos": "Europa continental", "holanda": "Europa continental",
+    "netherlands": "Europa continental",
+    "suecia": "Europa continental", "sweden": "Europa continental",
+    "rusia": "Europa continental", "russia": "Europa continental",
+    "turquia": "Europa continental", "turkey": "Europa continental",
+}
+
+# Variantes frecuentes de escritura (clave ya limpia, ver _clave).
+ALIAS = {
+    "kpop": "K-pop",
+    "hiphop": "Hip Hop",
+    "rap": "Hip Hop",
+    "rnb": "R&B",
+    "randb": "R&B",
+    "regueton": "Reggaeton",
+    "reggeaton": "Reggaeton",
+    "electronica": "EDM",
+    "clasica": "Classical",
+    "musicaclasica": "Classical",
+    "latam": "Latinoamérica",
+    "latinoamerica": "Latinoamérica",
+    "americalatina": "Latinoamérica",
+    "anglo": "Anglosajón",
+    "europa": "Europa continental",
 }
 
 _df_cache: pd.DataFrame | None = None
@@ -70,6 +90,17 @@ def _cargar_tabla() -> pd.DataFrame:
     if _df_cache is None:
         _df_cache = pd.read_csv(DATA_PATH)
     return _df_cache
+
+
+def _sin_tildes(texto: str) -> str:
+    return "".join(
+        c for c in unicodedata.normalize("NFD", texto) if unicodedata.category(c) != "Mn"
+    )
+
+
+def _clave(texto: str) -> str:
+    """Minúsculas, sin tildes y solo letras y números ('Hip-Hop' -> 'hiphop')."""
+    return "".join(c for c in _sin_tildes(str(texto).lower()) if c.isalnum())
 
 
 def nivel_evidencia(probabilidad: float) -> str:
@@ -100,53 +131,43 @@ def normalizar_entrada(texto: str | None) -> dict:
         }
 
     t = str(texto).strip()
-    t_low = t.lower()
+    clave = _clave(t)
 
-    # Coincidencia exacta insensible a mayúsculas para géneros.
+    # Coincidencia ignorando mayúsculas, tildes, espacios y guiones.
     for g in GENEROS:
-        if t_low == g.lower():
+        if clave == _clave(g):
             return {"tipo": "genero", "valor": g}
-
-    # Coincidencia exacta para regiones.
     for r in REGIONES:
-        if t_low == r.lower():
+        if clave == _clave(r):
             return {"tipo": "region", "valor": r}
 
-    # País -> región.
-    import unicodedata
+    # Variantes conocidas (kpop, hip-hop, reguetón, latam...).
+    if clave in ALIAS:
+        valor = ALIAS[clave]
+        return {"tipo": "genero" if valor in GENEROS else "region", "valor": valor}
 
-    def _sin_tildes(s: str) -> str:
-        return "".join(
-            c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn"
-        )
-
-    t_norm = _sin_tildes(t_low).strip()
-    if t_norm in PAIS_A_REGION:
-        return {"tipo": "region", "valor": PAIS_A_REGION[t_norm]}
+    # País de la base -> su región.
+    pais = _sin_tildes(t.lower()).strip()
+    if pais in PAIS_A_REGION:
+        return {"tipo": "region", "valor": PAIS_A_REGION[pais]}
 
     # Sugerencia por cercanía (error de escritura), ej. "Jaz" -> Jazz.
     # Cutoff 0.75: permite "Jaz"->"Jazz" (0.86) pero no "Salsa"->"Asia".
     candidatos = GENEROS + REGIONES
     candidatos_low = [c.lower() for c in candidatos]
-    cerca = difflib.get_close_matches(t_low, candidatos_low, n=1, cutoff=0.75)
+    cerca = difflib.get_close_matches(t.lower(), candidatos_low, n=1, cutoff=0.75)
     if cerca:
         original = candidatos[candidatos_low.index(cerca[0])]
-        if original in GENEROS:
-            return {
-                "tipo": "sugerencia",
-                "mensaje": f"¿Quisiste decir {original}?",
-                "valor": original,
-            }
         return {
             "tipo": "sugerencia",
             "mensaje": f"¿Quisiste decir {original}?",
             "valor": original,
         }
 
-    # Género inexistente -> lista de disponibles.
+    # Valor que no está en la base -> lista de disponibles.
     return {
         "tipo": "lista",
-        "mensaje": "Género no encontrado. Elige uno de la lista:",
+        "mensaje": f"«{t}» no está en la base. Elige uno de los géneros disponibles:",
         "generos": GENEROS,
     }
 
@@ -154,8 +175,9 @@ def normalizar_entrada(texto: str | None) -> dict:
 def recomendar_region(genero: str) -> dict:
     """Recomienda la región para un género.
 
-    Devuelve región recomendada, afinidad, probabilidad, evidencia y segunda opción,
-    más el detalle por región (afinidad, intervalo 90 %, probabilidad, registros).
+    Las regiones se ordenan por índice de afinidad, igual que en el notebook
+    (posición 1 = recomendada, posición 2 = segunda opción). El nivel de
+    evidencia sale de la probabilidad bootstrap de la región recomendada.
     """
     df = _cargar_tabla()
     norm = normalizar_entrada(genero)
@@ -169,7 +191,7 @@ def recomendar_region(genero: str) -> dict:
     sub = df[df["genero"] == genero_ok].copy()
     if sub.empty:
         raise ValueError(f"Género no encontrado: {genero_ok}")
-    sub = sub.sort_values("prob_mejor", ascending=False).reset_index(drop=True)
+    sub = sub.sort_values("afinidad", ascending=False).reset_index(drop=True)
 
     top = sub.iloc[0]
     segunda = sub.iloc[1] if len(sub) > 1 else None
