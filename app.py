@@ -812,20 +812,6 @@ def _sidebar_recomendacion() -> None:
             "Género", GENEROS, index=None, key="sel_genero", placeholder="Elige un género",
             on_change=_cambiar_genero, label_visibility="collapsed",
         )
-        with st.form("buscar_genero", clear_on_submit=False, border=False):
-            texto = st.text_input(
-                "Buscar género, país o región", placeholder="Género, país o región",
-                label_visibility="collapsed",
-            )
-            buscar = st.form_submit_button("Buscar", width="stretch")
-        if buscar:
-            norm = normalizar_entrada(texto)
-            if norm["tipo"] == "genero":
-                st.session_state.pending_genero = norm["valor"]
-                st.session_state.entrada_texto = ""
-            else:
-                st.session_state.entrada_texto = texto
-            st.rerun()
         st.markdown('<div class="mm-sep"></div>', unsafe_allow_html=True)
         genero = st.session_state.get("sel_genero") or st.session_state.get("genero")
         if genero:
